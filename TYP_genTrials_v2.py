@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import random
+import sys
 
 categories = ['baby','bee','bird','dog','cat','key','chain','bowling','car','scissors']
 isAnimate = {	'baby':1,'bee':1,'bird':1,'dog':1,'cat':1,
@@ -96,5 +97,8 @@ def	main(subjCode,seed):
 	return True
 
 if __name__ == "__main__":
-	trialList = main('CMD3123',101)
+	if (len(sys.argv) != 2):
+		print 'Usage: python TYP_genTrials_v2.py <subjCode>'
+		quit()
+	trialList = main(sys.argv[1],101)
 	print trialList
