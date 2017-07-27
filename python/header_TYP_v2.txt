@@ -1,0 +1,1 @@
+subjCode	seed	whichYes	data	initials	cueCategory	cueType	cueAnimate	soundFile	picCategory	picType	picAnimate	picFile	soa	isMatch	sameAnimacy	block	whichPart	curTrialIndex	expTimer	isRight	rt
