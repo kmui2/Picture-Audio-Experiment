@@ -9,7 +9,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "csv-write-stream": "^2.0.0",
+    "csvtojson": "^1.1.7",
     "express": "^4.13.3",
+    "fast-csv": "^2.4.0",
     "lodash": "^4.17.4",
     "python-shell": "^0.4.0"
   },

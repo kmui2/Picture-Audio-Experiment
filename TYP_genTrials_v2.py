@@ -54,7 +54,7 @@ def	main(subjCode,seed):
 	header = ['cueCategory', 'cueType', 'cueAnimate', 'soundFile', 'picCategory', 'picType', 'picAnimate', 'picFile', 'soa', 'isMatch', 'sameAnimacy', 'block']
 	separator = ','
 
-	testFile = open('public/trials/trials_'+subjCode+'.csv','w')
+	testFile = open('trials/trials_'+subjCode+'.csv','w')
 	print >> testFile, separator.join(header)
 	random.seed(int(seed))
 	

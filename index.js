@@ -7,6 +7,7 @@ const _ = require('lodash');
 const csvWriter = require("csv-write-stream");
 var bodyParser = require('body-parser');
 const writer = csvWriter({sendHeaders: false});
+const csv=require('csvtojson')
 
 let subjCode = 'null_subjCode';
 
@@ -33,7 +34,26 @@ app.post('/trials', function (req, res) {
     // res.send(trials);
     if (err) throw err;
     console.log(results);
-    res.send({success: results[0]});
+    
+
+    let csvFilePath = 'trials/trials_' + subjCode + '.csv';
+    let trials = [];
+    csv()
+    .fromFile(csvFilePath)
+    .on('json',(jsonObj)=>{
+      // combine csv header row and csv line to a json object
+      // jsonObj.a ==> 1 or 4
+      trials.push(jsonObj);
+    })
+    .on('done',(error)=>{
+      if (error) {
+        res.send({success: false});
+        throw error;
+      }
+      res.send({success: results[0], trials: trials});
+      console.log('finished parsing csv')
+    })
+    
   });
 })
 
@@ -56,3 +76,27 @@ app.post('/data', function (req, res) {
       res.send({success: true});
     } )
 })
+
+// {
+// 	"subjCode": "sloth",
+// 	"seed": "seed",
+// 	"whichYes": "whichYes",
+// 	"data": "myData",
+// 	"initials": "IJ",
+// 	"cueCategory": "som_category",
+// 	"cueType": "slothscue",
+// 	"cueAnimate": "some.wav",
+// 	"picCategory": "cat_pic",
+// 	"picType": "wav",
+// 	"picAnimate": "NoAnimate",
+// 	"picFile": "somethingpicFile",
+// 	"soa" : "soa",
+// 	"isMath": "isMathch",
+// 	"sameAnimacy": "notsameAnimacy",
+// 	"block": "BLock B",
+// 	"whichPart": "that part",
+// 	"curTrialIndex": "0 curr trial",
+// 	"expTimer" : "100 exp tiemr",
+// 	"isRight": "not right",
+// 	"rt": "1000ms"
+// }	
