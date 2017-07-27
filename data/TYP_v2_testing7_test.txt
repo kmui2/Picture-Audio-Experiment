@@ -1,0 +1,2 @@
+TYP_v2_testing7	102	z	subject	gl	cat	sound	1	cat_sound	cat	label	1	cat_pic_label	0.2	1	*	0	practice	0	5.44800496101	1	581.934213638
+TYP_v2_testing7	102	z	subject	gl	car	sound	0	car_sound	dog	sound	1	dog_pic_sound	0.2	0	0	0	practice	0	7.94915008545	1	254.575014114

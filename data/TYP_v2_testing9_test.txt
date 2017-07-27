@@ -1,0 +1,8 @@
+TYP_v2_testing9	103	z	subject	gl	bird	label	1	bird_label	bird	sound	1	bird_pic_sound	1.5	1	*	0	practice	0	5.9977350235	0	493.405818939
+TYP_v2_testing9	103	z	subject	gl	car	label	0	car_label	car	sound	0	car_pic_sound	0.2	1	*	0	practice	0	9.03301501274	1	784.669160843
+TYP_v2_testing9	103	z	subject	gl	bird	sound	1	bird_sound	bird	label	1	bird_pic_label	1.5	1	*	0	practice	0	13.1187908649	1	530.736923218
+TYP_v2_testing9	103	z	subject	gl	cat	sound	1	cat_sound	chain	sound	0	chain_pic_sound	1.5	0	0	0	practice	0	18.9706189632	1	2302.14190483
+TYP_v2_testing9	103	z	subject	gl	key	sound	0	key_sound	key	label	0	key_pic_label	1.5	1	*	0	practice	0	23.8732259274	1	1351.3250351
+TYP_v2_testing9	103	z	subject	gl	chain	label	0	chain_label	chain	both	0	chain_pic_both	1.5	1	*	0	practice	0	27.7086088657	1	288.459062576
+TYP_v2_testing9	103	z	subject	gl	baby	sound	1	baby_sound	key	sound	0	key_pic_sound	1.5	0	0	0	test	0	32.6274199486	0	500.699996948
+TYP_v2_testing9	103	z	subject	gl	key	sound	0	key_sound	key	label	0	key_pic_label	1.5	1	*	0	test	1	36.5129458904	1	334.017038345

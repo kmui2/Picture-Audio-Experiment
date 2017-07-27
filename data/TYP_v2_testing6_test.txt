@@ -1,0 +1,2 @@
+TYP_v2_testing6	101	z	subject	gl	bee	sound	1	bee_sound	bee	both	1	bee_pic_both	1.5	1	*	0	practice	0	8.68282604218	1	517.474889755
+TYP_v2_testing6	101	z	subject	gl	car	sound	0	car_sound	scissors	both	0	scissors_pic_both	0.2	0	1	0	practice	0	11.8008890152	1	874.858140945
