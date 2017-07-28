@@ -5,7 +5,7 @@ function runExperiment(trials, subjCode) {
     let turkInfo = jsPsych.turk.turkInfo();
 
     let participantID = makeid() + 'iTi' + makeid()
-    
+
     jsPsych.data.addProperties({
         subject: participantID,
         condition: 'explicit',
@@ -20,8 +20,8 @@ function runExperiment(trials, subjCode) {
     let welcome_block = {
         type: "text",
         cont_key: ' ',
-        text: `<h1>Judge the similarity between two sounds</h1>
-        <p>Welcome to the experiment. Press SPACE to begin.</p>`
+        text: `<h1>TYP_v2</h1>
+        <p>Welcome to the experiment. Thank you for participating! Press SPACE to begin.</p>`
     };
 
     timeline.push(welcome_block);
@@ -33,23 +33,22 @@ function runExperiment(trials, subjCode) {
         key_forward: ' ',
         key_backward: 8,
         pages: [
-            `<p>On each trial, you will hear two sounds played in succession. To help you distinguish them, during the first
-            you will see the number 1, and during the second a number 2. After hearing the second sound, you will be asked 
-            to rate how similar the two sounds are on a 7-point scale.</p> ${continue_space}`,
-
-            `<p>A 7 means the sounds are nearly identical. That is, if you were to hear these two sounds played again, you would 
-            likely be unable to tell whether they were in the same or different order as the first time you heard them. A 1 
-            on the scale means the sounds are entirely different and you would never confuse them. Each sound in the pair 
-            will come from a different speaker, so try to ignore differences due to just people having different voices. For 
-            example, a man and a woman saying the same word should get a high rating.
+            `<p>In this experiment, you will hear various words or sounds - such as the word 'cat' or
+            the sound of a cat meowing - and see pictures of those animals or objects. Sometimes the sound you hear will match the picture. For example, you'll hear a car honking 
+            and then see a picture of a car. Other times, the picture you see will not match the sound.
             </p> ${continue_space}`,
 
-            `<p>Please try to use as much of the scale as you can while maximizing the likelihood that if you did this again, you 
-            would reach the same judgments. If you need to hear the sounds again, you can press 'r' to repeat the trial. If 
-            one of the sounds is a non-verbal sound (like someone tapping on the mic), or if you only hear a single sound, 
-            or if you are otherwise unable to judge the similarity between the sounds, press the 'e' key to report the error. 
-            Pressing 'q' will quit the experiment. Your progress will be saved and you can continue later. Press the SPACEBAR 
-            to begin the experiment.
+            `<p>Your task is to decide as quickly as possible if the word or sound you hear matches the
+            picture you see. For example, if you hear the word 'bird' and see a picture of a bird, you
+            will press the button for 'Yes', but if you see a picture of a dog, you will press the button
+            for 'No</p> ${continue_space}`,
+
+            `<p>Please concentrate and see how quickly you can answer the questions. If you make a mistake,
+            you will hear a buzzing sound. If you are making many mistakes, you might be rushing. Let the
+            experimenter know when you have completed reading these instructions.
+            </p> ${continue_space}`,
+            
+            `<p>Press the '/' key for 'Yes' and the 'z' key for 'No'.
             </p> ${continue_space}`
         ]
     };
@@ -91,7 +90,7 @@ function runExperiment(trials, subjCode) {
 
         let block = {
             type: 'button-response',
-            stimulus:'img/speaker_icon.png',
+            stimulus: 'img/speaker_icon.png',
             choices: ['1', '2', '3', '4', '5', '6', '7', 'Repeat'],
             timing_stim: [-1],
             prompt: 'Rate the similarity of the two sounds on a scale of 1-7 or repeat the trial',
@@ -140,9 +139,9 @@ function runExperiment(trials, subjCode) {
 
     let endmessage = `Thank you for participating! Your completion code is ${participantID}. Copy and paste this in 
             MTurk to get paid. If you have any questions or comments, please email jsulik@wisc.edu.`
-    
 
-    
+
+
     jsPsych.init({
         default_iti: 0,
         timeline: timeline,
