@@ -1,6 +1,9 @@
 function runExperiment(trials, subjCode) {
     let timeline = [];
     let audioTimeline = [];
+    let bleep = new Audio('stimuli/sounds/bleep.wav');
+    let buzz = new Audio('stimuli/sounds/buzz.wav');
+    bleep.play();
 
     let turkInfo = jsPsych.turk.turkInfo();
 
@@ -47,7 +50,7 @@ function runExperiment(trials, subjCode) {
             you will hear a buzzing sound. If you are making many mistakes, you might be rushing. Let the
             experimenter know when you have completed reading these instructions.
             </p> ${continue_space}`,
-            
+
             `<p>Press the '/' key for 'Yes' and the 'z' key for 'No'.
             </p> ${continue_space}`
         ]
@@ -58,7 +61,7 @@ function runExperiment(trials, subjCode) {
     _.forEach(trials, (trial) => {
         let nested_timeline = [];
         let response = {
-            Name: subjCode,
+            subjCode: subjCode,
             Datetime: moment().format('MMMM Do YYYY, h:mm:ss a'),
             Block_ix: trial[5],
             Trial_ix: trial[0],
@@ -76,18 +79,9 @@ function runExperiment(trials, subjCode) {
         };
         let audio1Trial = {
             type: 'single-audio',
-            prompt: '<div class="center"><h1>' + (((response.Reversed) % 2) + 1) + '</h1><img src="img/speaker_icon.png" /></div>',
-            stimulus: trial[1].slice(2),
+            stimulus: trial[1],
             timing_response: 3000
         }
-
-        let audio2Trial = {
-            type: 'single-audio',
-            prompt: '<div class="center"><h1>' + (((response.Reversed + 1) % 2) + 1) + '</h1><img src="img/speaker_icon.png" /></div>',
-            stimulus: trial[2].slice(2),
-            timing_response: 3000
-        }
-
         let block = {
             type: 'button-response',
             stimulus: 'img/speaker_icon.png',
@@ -95,45 +89,21 @@ function runExperiment(trials, subjCode) {
             timing_stim: [-1],
             prompt: 'Rate the similarity of the two sounds on a scale of 1-7 or repeat the trial',
             on_finish: function (data) {
-                response.Repeat++;
-                response.Similarity = data.button_pressed + 1; // buttons are 0 indexed
-                response.Datetime = moment().format('MMMM Do YYYY, h:mm:ss a');
+                response.Similarity = data.button_pressed + 1; 
                 response.Response_time = data.rt;
                 console.log(response);
             }
         }
-
-        if (trial[3] == 1) {
-            nested_timeline.push(audio2Trial);
-            nested_timeline.push(audio1Trial);
-        } else {
-            nested_timeline.push(audio1Trial);
-            nested_timeline.push(audio2Trial);
-        }
-        nested_timeline.push(block);
-
-        var repeat_trial = {
-            timeline: nested_timeline,
-            loop_function: function (data) {
-                if (jsPsych.data.getLastTrialData().button_pressed == 7) {
-                    console.log("repeated!");
-                    return true;
-                } else {
-                    $.ajax({
-                        url: '/record',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(response),
-                        success: function (trials) {
-                            console.log(trials);
-                            runExperiment(trials);
-                        }
-                    })
-                    return false;
-                }
-            }
-        }
-        timeline.push(repeat_trial);
+        // $.ajax({
+        //     url: '/record',
+        //     type: 'POST',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify(response),
+        //     success: function (trials) {
+        //         console.log(trials);
+        //         runExperiment(trials);
+        //     }
+        // })
     })
 
 
