@@ -5,7 +5,7 @@ $(document).ready(function(){
     $("form").submit(function(){
 
         // Define your workerId, assignmentId, and hitId here
-        let name = $("#subjCode").val().slice();
+        let subjCode = $("#subjCode").val().slice();
 
         $("form").remove();
         $("#loading").html('Loading trials... please wait. </br> <img src="img/preloader.gif">')
@@ -13,10 +13,10 @@ $(document).ready(function(){
         // This calls server to run python generate trials (judements.py) script
         // Then passes the generated trials to the experiment
         $.ajax({
-            url: '/sounds',
+            url: '/trials',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({name: name}),
+            data: JSON.stringify({subjCode: subjCode}),
             success: function (trials) {
                 console.log(trials);
                 runExperiment(trials, subjCode);
