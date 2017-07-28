@@ -88,11 +88,19 @@ function runExperiment(trials, subjCode) {
             choices: [[90,191]],
             timing_stim: [-1],
             prompt: 'Rate the similarity of the two sounds on a scale of 1-7 or repeat the trial',
+            timing_post_trial: 1000,
             on_finish: function (data) {
                 // response.Similarity = data.button_pressed + 1; 
                 // response.Response_time = data.rt;
                 // console.log(response);
-                bleep.play();
+                let key = data.key_press.replace(/\D+/g, '');;
+                console.log(trial.isMatch);
+                console.log(key);
+                if ((trial.isMatch == 0 && key == "191") ||
+                    (trial.isMatch == 1 && key == "90"))
+                    bleep.play();
+                else
+                    buzz.play();
             }
         }
         timeline.push(audioTrial);
