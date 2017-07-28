@@ -1,4 +1,4 @@
-function runExperiment(trials, name, workerId, assignmentId, hitId) {
+function runExperiment(trials, subjCode) {
     let timeline = [];
     let audioTimeline = [];
 
@@ -59,7 +59,7 @@ function runExperiment(trials, name, workerId, assignmentId, hitId) {
     _.forEach(trials, (trial) => {
         let nested_timeline = [];
         let response = {
-            Name: name,
+            Name: subjCode,
             Datetime: moment().format('MMMM Do YYYY, h:mm:ss a'),
             Block_ix: trial[5],
             Trial_ix: trial[0],
