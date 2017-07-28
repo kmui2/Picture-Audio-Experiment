@@ -87,7 +87,6 @@ function runExperiment(trials, subjCode) {
             stimuli: ['stimuli/pictures/'+trial.picFile+'.jpg'],
             choices: [[90,191]],
             timing_stim: [-1],
-            prompt: 'Rate the similarity of the two sounds on a scale of 1-7 or repeat the trial',
             timing_post_trial: 1000,
             on_finish: function (data) {
                 // response.Similarity = data.button_pressed + 1; 
