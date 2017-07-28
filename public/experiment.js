@@ -59,41 +59,44 @@ function runExperiment(trials, subjCode) {
     timeline.push(instructions);
 
     _.forEach(trials, (trial) => {
-        let nested_timeline = [];
-        let response = {
-            subjCode: subjCode,
-            Datetime: moment().format('MMMM Do YYYY, h:mm:ss a'),
-            Block_ix: trial[5],
-            Trial_ix: trial[0],
-            Sound_x: trial[1].match(/\d+/)[0],
-            Sound_y: trial[2].match(/\d+/)[0],
-            Reversed: trial[3],
-            Category: trial[4],
-            Similarity: -1,
-            Notes: 'None',
-            Repeat: -1,
-            Response_time: -1,
-            workerId: workerId,
-            assignmentId: assignmentId,
-            hitId: hitId
-        };
-        let audio1Trial = {
+        // console.log(trial);
+        // let response = {
+        //     subjCode: subjCode,
+        //     Datetime: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        //     Block_ix: trial[5],
+        //     Trial_ix: trial[0],
+        //     Sound_x: trial[1].match(/\d+/)[0],
+        //     Sound_y: trial[2].match(/\d+/)[0],
+        //     Reversed: trial[3],
+        //     Category: trial[4],
+        //     Similarity: -1,
+        //     Notes: 'None',
+        //     Repeat: -1,
+        //     Response_time: -1,
+        //     workerId: workerId,
+        //     assignmentId: assignmentId,
+        //     hitId: hitId
+        // };
+        let audioTrial = {
             type: 'single-audio',
-            stimulus: trial[1],
+            stimulus: 'stimuli/sounds/' + trial.soundFile+'.wav',
             timing_response: 3000
         }
         let block = {
-            type: 'button-response',
-            stimulus: 'img/speaker_icon.png',
-            choices: ['1', '2', '3', '4', '5', '6', '7', 'Repeat'],
+            type: 'multi-stim-multi-response',
+            stimuli: ['stimuli/pictures/'+trial.picFile+'.jpg'],
+            choices: [[90,191]],
             timing_stim: [-1],
             prompt: 'Rate the similarity of the two sounds on a scale of 1-7 or repeat the trial',
             on_finish: function (data) {
-                response.Similarity = data.button_pressed + 1; 
-                response.Response_time = data.rt;
-                console.log(response);
+                // response.Similarity = data.button_pressed + 1; 
+                // response.Response_time = data.rt;
+                // console.log(response);
+                bleep.play();
             }
         }
+        timeline.push(audioTrial);
+        timeline.push(block);
         // $.ajax({
         //     url: '/record',
         //     type: 'POST',

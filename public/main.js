@@ -17,9 +17,9 @@ $(document).ready(function(){
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({subjCode: subjCode}),
-            success: function (trials) {
-                console.log(trials);
-                runExperiment(trials, subjCode);
+            success: function (data) {
+                console.log(data);
+                runExperiment(data.trials, subjCode);
             }
         })
     });
