@@ -77,26 +77,3 @@ app.post('/data', function (req, res) {
     } )
 })
 
-// {
-// 	"subjCode": "sloth",
-// 	"seed": "seed",
-// 	"whichYes": "whichYes",
-// 	"data": "myData",
-// 	"initials": "IJ",
-// 	"cueCategory": "som_category",
-// 	"cueType": "slothscue",
-// 	"cueAnimate": "some.wav",
-// 	"picCategory": "cat_pic",
-// 	"picType": "wav",
-// 	"picAnimate": "NoAnimate",
-// 	"picFile": "somethingpicFile",
-// 	"soa" : "soa",
-// 	"isMath": "isMathch",
-// 	"sameAnimacy": "notsameAnimacy",
-// 	"block": "BLock B",
-// 	"whichPart": "that part",
-// 	"curTrialIndex": "0 curr trial",
-// 	"expTimer" : "100 exp tiemr",
-// 	"isRight": "not right",
-// 	"rt": "1000ms"
-// }	
