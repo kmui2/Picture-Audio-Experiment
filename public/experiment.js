@@ -118,7 +118,8 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                     response.isRight ='0';
                 }
                 
-                response.rt = data.rt.replace(/\D+/g, '');;
+                response.rt = data.rt.replace(/\D+/g, '');
+                response.expTimer = data.time_elapsed / 1000;
                 $.ajax({
                     url: '/data',
                     type: 'POST',
