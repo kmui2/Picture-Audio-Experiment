@@ -3,7 +3,6 @@ function runExperiment(trials, subjCode) {
     let audioTimeline = [];
     let bleep = new Audio('stimuli/sounds/bleep.wav');
     let buzz = new Audio('stimuli/sounds/buzz.wav');
-    bleep.play();
 
     let turkInfo = jsPsych.turk.turkInfo();
 
