@@ -1,0 +1,13 @@
+[692]	["stimuli/pictures/scissors_pic_neither.jpg"]	[90]	multi-stim-multi-response	3	6508	0.0-3.0	x0gQwiTi7JjHD	explicit	shuffled			
+[2850]	["stimuli/pictures/bee_pic_label.jpg"]	[90]	multi-stim-multi-response	5	13367	0.0-5.0	x0gQwiTi7JjHD	explicit	shuffled			
+[1533]	["stimuli/pictures/cat_pic_neither.jpg"]	[191]	multi-stim-multi-response	7	18904	0.0-7.0	x0gQwiTi7JjHD	explicit	shuffled			
+[296]	["stimuli/pictures/scissors_pic_neither.jpg"]	[90]	multi-stim-multi-response	9	23208	0.0-9.0	x0gQwiTi7JjHD	explicit	shuffled			
+[573]	["stimuli/pictures/baby_pic_label.jpg"]	[191]	multi-stim-multi-response	11	27789	0.0-11.0	x0gQwiTi7JjHD	explicit	shuffled			
+[360]	["stimuli/pictures/dog_pic_label.jpg"]	[90]	multi-stim-multi-response	13	32165	0.0-13.0	x0gQwiTi7JjHD	explicit	shuffled			
+[683]	["stimuli/pictures/key_pic_neither.jpg"]	[191]	multi-stim-multi-response	15	36856	0.0-15.0	x0gQwiTi7JjHD	explicit	shuffled			
+[875]	["stimuli/pictures/bee_pic_sound.jpg"]	[90]	multi-stim-multi-response	17	41737	0.0-17.0	x0gQwiTi7JjHD	explicit	shuffled			
+[801]	["stimuli/pictures/dog_pic_neither.jpg"]	[191]	multi-stim-multi-response	19	46543	0.0-19.0	x0gQwiTi7JjHD	explicit	shuffled			
+[9136]	["stimuli/pictures/chain_pic_neither.jpg"]	[191]	multi-stim-multi-response	21	56849	0.0-21.0	x0gQwiTi7JjHD	explicit	shuffled			
+[396]	["stimuli/pictures/bee_pic_both.jpg"]	[191]	multi-stim-multi-response	23	58463	0.0-23.0	x0gQwiTi7JjHD	explicit	shuffled			
+[201]	["stimuli/pictures/key_pic_sound.jpg"]	[191]	multi-stim-multi-response	25	59794	0.0-25.0	x0gQwiTi7JjHD	explicit	shuffled			
+[1989]	["stimuli/pictures/baby_pic_label.jpg"]	[90]	multi-stim-multi-response	27	63409	0.0-27.0	x0gQwiTi7JjHD	explicit	shuffled			

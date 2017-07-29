@@ -60,23 +60,29 @@ function runExperiment(trials, subjCode) {
 
     _.forEach(trials, (trial) => {
         // console.log(trial);
-        // let response = {
-        //     subjCode: subjCode,
-        //     Datetime: moment().format('MMMM Do YYYY, h:mm:ss a'),
-        //     Block_ix: trial[5],
-        //     Trial_ix: trial[0],
-        //     Sound_x: trial[1].match(/\d+/)[0],
-        //     Sound_y: trial[2].match(/\d+/)[0],
-        //     Reversed: trial[3],
-        //     Category: trial[4],
-        //     Similarity: -1,
-        //     Notes: 'None',
-        //     Repeat: -1,
-        //     Response_time: -1,
-        //     workerId: workerId,
-        //     assignmentId: assignmentId,
-        //     hitId: hitId
-        // };
+        let response = {
+            subjCode: subjCode,
+            seed: "NoSeed",
+            whichYes: 'z',
+            data: "subject",
+            initials: 'gl',
+            cueCategory: trial.cueCategory,
+            cueType: trial.cueType,
+            cueAnimate: trial.cueAnimate,
+            picCategory: trial.picCategory,
+            picType: trial.picType,
+            picAnimate: trial.picAnimate,
+            picFile: trial.picFile,
+            soa : trial.soa,
+            isMath: trial.isMatch,
+            sameAnimacy: trial.sameAnimacy,
+            block: trial.block,
+            whichPart: 'test',
+            curTrialIndex: 0,
+            expTimer : -1,
+            isRight: -1,
+            rt: -1
+        }	
         let audioTrial = {
             type: 'single-audio',
             stimulus: 'stimuli/sounds/' + trial.soundFile+'.wav',
@@ -89,31 +95,33 @@ function runExperiment(trials, subjCode) {
             timing_stim: [-1],
             timing_post_trial: 1000,
             on_finish: function (data) {
-                // response.Similarity = data.button_pressed + 1; 
-                // response.Response_time = data.rt;
-                // console.log(response);
-                let key = data.key_press.replace(/\D+/g, '');;
+                console.log(response);
+                let key = data.key_press.replace(/\D+/g, '');
                 console.log(trial.isMatch);
                 console.log(key);
                 if ((trial.isMatch == 0 && key == "191") ||
-                    (trial.isMatch == 1 && key == "90"))
+                    (trial.isMatch == 1 && key == "90")) {
                     bleep.play();
-                else
+                    response.isRight = '1';
+                }
+                else{
                     buzz.play();
+                    response.isRight ='0';
+                }
+                
+                response.rt = data.rt.replace(/\D+/g, '');;
+                $.ajax({
+                    url: '/data',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(response),
+                    success: function () {
+                    }
+                })
             }
         }
         timeline.push(audioTrial);
         timeline.push(block);
-        // $.ajax({
-        //     url: '/record',
-        //     type: 'POST',
-        //     contentType: 'application/json',
-        //     data: JSON.stringify(response),
-        //     success: function (trials) {
-        //         console.log(trials);
-        //         runExperiment(trials);
-        //     }
-        // })
     })
 
 

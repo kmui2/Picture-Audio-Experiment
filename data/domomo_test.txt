@@ -1,0 +1,7 @@
+domomo	NoSeed	z	subject	gl	scissors	sound	0	scissors	neither	0	scissors_pic_neither	0.2	1	*	0	test	0	-1	1	[546]
+domomo	NoSeed	z	subject	gl	chain	sound	0	bee	label	1	bee_pic_label	1.5	0	0	0	test	0	-1	0	[203]
+domomo	NoSeed	z	subject	gl	cat	label	1	cat	neither	1	cat_pic_neither	0.2	1	*	0	test	0	-1	1	[226]
+domomo	NoSeed	z	subject	gl	scissors	label	0	scissors	neither	0	scissors_pic_neither	1.5	1	*	0	test	0	-1	1	[235]
+domomo	NoSeed	z	subject	gl	baby	label	1	baby	label	1	baby_pic_label	0.2	1	*	0	test	0	-1	1	[221]
+domomo	NoSeed	z	subject	gl	dog	label	1	dog	label	1	dog_pic_label	1.5	1	*	0	test	0	-1	1	[206]
+domomo	NoSeed	z	subject	gl	key	sound	0	key	neither	0	key_pic_neither	0.2	1	*	0	test	0	-1	0	[2088]
