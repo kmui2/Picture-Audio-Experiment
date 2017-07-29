@@ -4,7 +4,10 @@ $(document).ready(function(){
     // This listens to the form on-submit action
     $("form").submit(function(){
 
-        // Define your workerId, assignmentId, and hitId here
+
+        //////////////////////////////////////////
+        // DEFINE workerId, hitId, assignmentId HERE
+        //////////////////////////////////////////
         let subjCode = $("#subjCode").val().slice();
 
         $("form").remove();

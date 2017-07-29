@@ -61,7 +61,7 @@ function runExperiment(trials, subjCode) {
         // console.log(trial);
         let response = {
             subjCode: subjCode,
-            seed: "NoSeed",
+            seed: '101',    //seed can be changed in TYP_genTrials.py file
             whichYes: 'z',
             data: "subject",
             initials: 'gl',
