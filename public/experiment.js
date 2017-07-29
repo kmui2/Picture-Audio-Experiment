@@ -76,7 +76,7 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             picAnimate: trial.picAnimate,
             picFile: trial.picFile,
             soa : trial.soa,
-            isMath: trial.isMatch,
+            isMatch: trial.isMatch,
             sameAnimacy: trial.sameAnimacy,
             block: trial.block,
             whichPart: 'test',
