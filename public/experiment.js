@@ -1,23 +1,24 @@
+// Function Call to Run the experiment
 function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
+    
     let timeline = [];
-    let audioTimeline = [];
+
+    // Sounds to play for audio trials
     let bleep = new Audio('stimuli/sounds/bleep.wav');
     let buzz = new Audio('stimuli/sounds/buzz.wav');
 
+    // Data that is collected for jsPsych
     let turkInfo = jsPsych.turk.turkInfo();
-
     let participantID = makeid() + 'iTi' + makeid()
 
     jsPsych.data.addProperties({
         subject: participantID,
         condition: 'explicit',
         group: 'shuffled',
-        workerId: turkInfo.workerId,
-        assginementId: turkInfo.assignmentId,
-        hitId: turkInfo.assignmentId
+        workerId: workerId,
+        assginementId: assignmentId,
+        hitId: hitId
     });
-
-    let continue_space = "<div class='right small'>(press SPACE to continue, or BACKSPACE to head back)</div>";
 
     let welcome_block = {
         type: "text",
@@ -28,7 +29,7 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
 
     timeline.push(welcome_block);
 
-
+    let continue_space = "<div class='right small'>(press SPACE to continue, or BACKSPACE to head back)</div>";
 
     let instructions = {
         type: "instructions",
@@ -58,7 +59,8 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
     timeline.push(instructions);
 
     _.forEach(trials, (trial) => {
-        // console.log(trial);
+        
+        // Empty Response Data to be sent to be collected
         let response = {
             subjCode: subjCode,
             seed: '101',    //seed can be changed in TYP_genTrials.py file
@@ -85,31 +87,24 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             assignmentId: assignmentId,
             hitId: hitId
         }	
-        
-        // var audio = new Audio('stimuli/sounds/' + trial.soundFile+'.wav');
-        // audio.onloadedmetadata = function() {
-        //     console.log(audio.duration)
-        // };
 
+        // Audio plays for its duration plus variable delay
         let audioTrial = {
             type: 'single-audio',
             stimulus: 'stimuli/sounds/' + trial.soundFile+'.wav',
             timing_response: 600 + Number(trial.soa) *1000
         }
 
-        let block = {
+        // Picture Trial
+        let pictureTrial = {
             type: 'multi-stim-multi-response',
             stimuli: ['stimuli/pictures/'+trial.picFile+'.jpg'],
             choices: [[90,191]],
             timing_stim: [-1],
             timing_post_trial: 1000,
             on_finish: function (data) {
-                console.log(response);
                 let key = data.key_press.replace(/\D+/g, '');
-                console.log(trial.isMatch);
-                console.log(key);
-                if ((trial.isMatch == 0 && key == "191") ||
-                    (trial.isMatch == 1 && key == "90")) {
+                if ((trial.isMatch == 0 && key == "191") || (trial.isMatch == 1 && key == "90")) {
                     bleep.play();
                     response.isRight = '1';
                 }
@@ -117,7 +112,6 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                     buzz.play();
                     response.isRight ='0';
                 }
-                
                 response.rt = data.rt.replace(/\D+/g, '');
                 response.expTimer = data.time_elapsed / 1000;
                 $.ajax({
@@ -126,17 +120,18 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                     contentType: 'application/json',
                     data: JSON.stringify(response),
                     success: function () {
+                        console.log(response);
                     }
                 })
             }
         }
         timeline.push(audioTrial);
-        timeline.push(block);
+        timeline.push(pictureTrial);
     })
 
 
     let endmessage = `Thank you for participating! Your completion code is ${participantID}. Copy and paste this in 
-            MTurk to get paid. If you have any questions or comments, please email jsulik@wisc.edu.`
+        MTurk to get paid. If you have any questions or comments, please email jsulik@wisc.edu.`
 
 
 
@@ -145,8 +140,6 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
         timeline: timeline,
         on_finish: function (data) {
             jsPsych.endExperiment(endmessage);
-            console.log("finished initTimeline");
-
         }
     });
 }
