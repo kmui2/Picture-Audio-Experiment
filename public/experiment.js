@@ -1,4 +1,4 @@
-function runExperiment(trials, subjCode) {
+function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
     let timeline = [];
     let audioTimeline = [];
     let bleep = new Audio('stimuli/sounds/bleep.wav');
@@ -80,7 +80,10 @@ function runExperiment(trials, subjCode) {
             curTrialIndex: 0,
             expTimer : -1,
             isRight: -1,
-            rt: -1
+            rt: -1,
+            workerId: workerId,
+            assignmentId: assignmentId,
+            hitId: hitId
         }	
         
         // var audio = new Audio('stimuli/sounds/' + trial.soundFile+'.wav');

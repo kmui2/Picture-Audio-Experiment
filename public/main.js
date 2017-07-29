@@ -9,9 +9,9 @@ $(document).ready(function(){
         // DEFINE workerId, hitId, assignmentId HERE
         //////////////////////////////////////////
         let subjCode = $("#subjCode").val().slice();
-        let workerId = '';
-        let assignmentId = '';
-        let hitId = '';
+        let workerId = 'workerId';
+        let assignmentId = 'assignmentId';
+        let hitId = 'hitId';
 
         $("form").remove();
         $("#loading").html('Loading trials... please wait. </br> <img src="img/preloader.gif">')
@@ -25,7 +25,7 @@ $(document).ready(function(){
             data: JSON.stringify({subjCode: subjCode}),
             success: function (data) {
                 console.log(data);
-                runExperiment(data.trials, subjCode);
+                runExperiment(data.trials, subjCode, workerId, assignmentId, hitId);
             }
         })
     }); // Remove
