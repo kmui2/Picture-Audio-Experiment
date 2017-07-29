@@ -82,11 +82,18 @@ function runExperiment(trials, subjCode) {
             isRight: -1,
             rt: -1
         }	
+        
+        // var audio = new Audio('stimuli/sounds/' + trial.soundFile+'.wav');
+        // audio.onloadedmetadata = function() {
+        //     console.log(audio.duration)
+        // };
+
         let audioTrial = {
             type: 'single-audio',
             stimulus: 'stimuli/sounds/' + trial.soundFile+'.wav',
-            timing_response: 3000
+            timing_response: 600 + Number(trial.soa) *1000
         }
+
         let block = {
             type: 'multi-stim-multi-response',
             stimuli: ['stimuli/pictures/'+trial.picFile+'.jpg'],
