@@ -58,6 +58,7 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
 
     timeline.push(instructions);
 
+    // Pushes each audio trial to timeline
     _.forEach(trials, (trial) => {
         
         // Empty Response Data to be sent to be collected
@@ -94,6 +95,8 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             stimulus: 'stimuli/sounds/' + trial.soundFile+'.wav',
             timing_response: 600 + Number(trial.soa) *1000
         }
+        
+        timeline.push(audioTrial);
 
         // Picture Trial
         let pictureTrial = {
@@ -103,7 +106,9 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             timing_stim: [-1],
             timing_post_trial: 1000,
             on_finish: function (data) {
-                let key = data.key_press.replace(/\D+/g, '');
+                
+                // Check for match
+                let key = data.key_press.replace(/\D+/g, '');   // Keeps only digits
                 if ((trial.isMatch == 0 && key == "191") || (trial.isMatch == 1 && key == "90")) {
                     bleep.play();
                     response.isRight = '1';
@@ -112,8 +117,11 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                     buzz.play();
                     response.isRight ='0';
                 }
+
                 response.rt = data.rt.replace(/\D+/g, '');
                 response.expTimer = data.time_elapsed / 1000;
+
+                // POST response data to server
                 $.ajax({
                     url: '/data',
                     type: 'POST',
@@ -125,7 +133,6 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                 })
             }
         }
-        timeline.push(audioTrial);
         timeline.push(pictureTrial);
     })
 
