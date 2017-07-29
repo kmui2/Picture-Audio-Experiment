@@ -9,6 +9,9 @@ $(document).ready(function(){
         // DEFINE workerId, hitId, assignmentId HERE
         //////////////////////////////////////////
         let subjCode = $("#subjCode").val().slice();
+        let workerId = '';
+        let assignmentId = '';
+        let hitId = '';
 
         $("form").remove();
         $("#loading").html('Loading trials... please wait. </br> <img src="img/preloader.gif">')
