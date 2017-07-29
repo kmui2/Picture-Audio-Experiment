@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
     // This listens to the form on-submit action
-    $("form").submit(function(){
+    $("form").submit(function(){    // Remove
 
 
         //////////////////////////////////////////
@@ -28,7 +28,7 @@ $(document).ready(function(){
                 runExperiment(data.trials, subjCode);
             }
         })
-    });
+    }); // Remove
     
 
 });
