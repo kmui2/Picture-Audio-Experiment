@@ -25,6 +25,7 @@ $(document).ready(function(){
             data: JSON.stringify({subjCode: subjCode}),
             success: function (data) {
                 console.log(data);
+                $("#loading").remove();
                 runExperiment(data.trials, subjCode, workerId, assignmentId, hitId);
             }
         })
