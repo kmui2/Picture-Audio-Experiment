@@ -1,0 +1,1 @@
+res	101	z	subject	gl	scissors	sound	0	scissors	neither	0	scissors_pic_neither	0.2	1	*	0	test	0	7.067	0	973	workerId	assignmentId	hitId	1920X1080	1869X1056

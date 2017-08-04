@@ -86,7 +86,9 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             rt: -1,
             workerId: workerId,
             assignmentId: assignmentId,
-            hitId: hitId
+            hitId: hitId,
+            screenRes: screen.width+'x'+screen.height,
+            windowSize: screen.availWidth+'x'+screen.availHeight
         }	
 
         // Audio plays for its duration plus variable delay
