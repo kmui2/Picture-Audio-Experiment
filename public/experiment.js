@@ -123,6 +123,9 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                 response.rt = data.rt.replace(/\D+/g, '');
                 response.expTimer = data.time_elapsed / 1000;
 
+                response.screenRes = screen.width+'x'+screen.height,
+                response.windowSize = $(window).width()+'x'+$(window).height()
+
                 // POST response data to server
                 $.ajax({
                     url: '/data',
