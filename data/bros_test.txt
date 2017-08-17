@@ -1,0 +1,2 @@
+bros	101	z	subject	gl	scissors	sound	0	scissors	neither	0	scissors_pic_neither	0.2	1	*	0	test	0	5.002	0	829	workerId	assignmentId	hitId	1920x1080	1275x1080
+bros	101	z	subject	gl	chain	sound	0	bee	label	1	bee_pic_label	1.5	0	0	0	test	0	6.233	1	179	workerId	assignmentId	hitId	1920x1080	1275x1080

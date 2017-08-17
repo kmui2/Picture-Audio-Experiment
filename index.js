@@ -18,14 +18,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.set('port', (process.env.PORT || 8080))
 
 // For rending HTML
-app.use(express.static(__dirname + '/public'))
-app.get('/', function (request, response) {
-  response.sendFile(path.join(__dirname + '/public/index.html'));
+app.get('/', function (req, res) {
+
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 })
+app.use(express.static(__dirname + '/public'))
 
 app.listen(app.get('port'), function () {
   console.log("Node app is running at http://localhost:" + app.get('port'))
 })
+
 
 // POST endpoint for requesting trials
 app.post('/trials', function (req, res) {
