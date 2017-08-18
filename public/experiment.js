@@ -1,6 +1,8 @@
 // Function Call to Run the experiment
-function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
-    
+function runExperiment(trials, subjCode, workerId, assignmentId, hitId, whichyes) {
+    let whichno = whichyes=="z" ? "/": "z";
+    let whichyesKey = whichyes=="z" ? 191 : 90;
+    let whichnoKey = whichyes=="z" ? 90 : 191;
     let timeline = [];
 
     // Sounds to play for audio trials
@@ -51,7 +53,7 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             experimenter know when you have completed reading these instructions.
             </p> ${continue_space}`,
 
-            `<p>Press the '/' key for 'Yes' and the 'z' key for 'No'.
+            `<p>Press the '${whichyes}' key for 'Yes' and the '${whichno}' key for 'No'.
             </p> ${continue_space}`
         ]
     };
@@ -88,7 +90,8 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
             assignmentId: assignmentId,
             hitId: hitId,
             screenRes: screen.width+'x'+screen.height,
-            windowSize: screen.availWidth+'x'+screen.availHeight
+            windowSize: screen.availWidth+'x'+screen.availHeight,
+            whichyes: whichyes
         }	
 
         // Audio plays for its duration plus variable delay
@@ -111,7 +114,7 @@ function runExperiment(trials, subjCode, workerId, assignmentId, hitId) {
                 
                 // Check for match
                 let key = data.key_press.replace(/\D+/g, '');   // Keeps only digits
-                if ((trial.isMatch == 0 && key == "191") || (trial.isMatch == 1 && key == "90")) {
+                if ((trial.isMatch == 0 && key == whichyesKey) || (trial.isMatch == 1 && key == whichnoKey)) {
                     bleep.play();
                     response.isRight = '1';
                 }
