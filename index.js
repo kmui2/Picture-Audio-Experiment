@@ -4,13 +4,11 @@ const path = require("path");
 const PythonShell = require('python-shell');
 const fs = require('fs');
 const _ = require('lodash');
-const csvWriter = require("csv-write-stream");
 const bodyParser = require('body-parser');
 const csv = require('csvtojson');
 
 
 let app = express();
-let writer = csvWriter({sendHeaders: false});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
